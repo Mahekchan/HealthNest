@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthNest - Welcome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body { 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('homepage.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 900px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header img {
+            width: 200px; /* Increased the width */
+            height: auto;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .header p {
+            font-size: 20px;
+            color: #555;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            width: 45%;
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="logo.png" alt="HealthNest Logo">
+            <h1>Your Health, Our Priority!</h1>
+            <p>At HealthNest, we bring healthcare closer to you. Find doctors, book appointments, and access medical care with ease.</p>
+        </div>
+
+        <div class="buttons">
+            <a href="user_login.html" class="btn">User Login</a>
+            <a href="hospital_login.html" class="btn">Hospital Login</a>
+            <a href="user_register.html" class="btn">User Register</a>
+            <a href="hospital_register.html" class="btn">Hospital Register</a>
+        </div>
+    </div>
+</body>
+</html>
