@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthNest - User Settings</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #1a73e8;
+      color: white;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar li:hover, .sidebar li.active {
+      background-color: #4285f4;
+    }
+
+    .sidebar .material-icons {
+      margin-right: 10px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1a73e8;
+      margin-bottom: 30px;
+    }
+
+    .settings-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .settings-card h3 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .input-group .icon {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: #888;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-save {
+      background-color: #1a73e8;
+      color: white;
+    }
+
+    .btn-reset {
+      background-color: #d93025;
+      color: white;
+    }
+
+    .buttons button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>HealthNest</h2>
+    <ul>
+      <li><a href="user_dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+      <li><a href="user_appointments.html"><span class="material-icons">event</span> Appointments</a></li>
+      <li><a href="user_prescriptions.html"><span class="material-icons">assignment</span> Prescriptions</a></li>
+      <li><a href="user_medical_records.html"><span class="material-icons">folder</span> Medical Records</a></li>
+      <li><a href="user_jobs.html"><span class="material-icons">work</span> Jobs</a></li>
+      <li><a href="user_donations.html"><span class="material-icons">volunteer_activism</span> Donations</a></li>
+      <li><a href="user_profile.html"><span class="material-icons">person</span> Profile</a></li>
+      <li class="active"><a href="user_settings.html"><span class="material-icons">settings</span> Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">Settings</div>
+
+    <div class="settings-card">
+      <h3>Update Settings</h3>
+      <form id="settingsForm">
+        <div class="input-group">
+          <label for="userName">User Name</label>
+          <input type="text" id="userName" placeholder="Enter user name">
+        </div>
+        <div class="input-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter email">
+        </div>
+        <div class="input-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="Enter phone number">
+        </div>
+        <div class="input-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="Enter address">
+        </div>
+
+        <div class="buttons">
+          <button type="button" class="btn-save" onclick="saveSettings()">Save Changes</button>
+          <button type="button" class="btn-reset" onclick="resetSettings()">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function saveSettings() {
+      alert('Settings saved.');
+      // Logic to save settings
+    }
+
+    function resetSettings() {
+      alert('Settings reset.');
+      // Logic to reset settings
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthNest - Hospital Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+            background-image: url('health-background.jpg'); /* Add your health-related background image here */
+            background-size: cover;
+        }
+
+        .container {
+            display: flex;
+            width: 800px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .left {
+            background-color: #4ea3f1;
+            color: white;
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            flex-direction: column;
+        }
+
+        .left h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .left img {
+            width: 200px; /* Adjust the width as needed */
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .left h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .left p {
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .right {
+            background-color: white;
+            width: 50%;
+            padding: 50px 30px;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 35px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-group .icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .btn {
+            width: 100%;
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .success-message {
+            display: none;
+            color: green;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .error-message {
+            display: none;
+            color: red;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side -->
+        <div class="left">
+            <div style="text-align: center;">
+                <h1><img src="logo.png" alt="HealthNest Logo"></h1>
+                <h2>Welcome to HealthNest</h2>
+                <p>Your Gateway to Smarter Healthcare</p>
+            </div>
+        </div>
+
+        <!-- Right Side (Registration Form) -->
+        <div class="right">
+            <h3 style="text-align: center; margin-bottom: 20px;">Hospital Registration</h3>
+
+            <form id="registrationForm">
+                <div class="input-group">
+                    <i class="fas fa-hospital-alt icon"></i>
+                    <input type="text" id="hospitalName" placeholder="Hospital Name">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope icon"></i>
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-phone icon"></i>
+                    <input type="text" id="phone" placeholder="Phone Number">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" id="password" placeholder="Password">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock icon"></i>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+                </div>
+
+                <button type="button" class="btn" onclick="validateRegistration()">Register as Hospital</button>
+
+                <!-- Success and Error Messages -->
+                <div class="success-message" id="successMessage">Registration Successful!</div>
+                <div class="error-message" id="errorMessage"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const registrationForm = document.getElementById('registrationForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        function validateRegistration() {
+            const hospitalName = document.getElementById('hospitalName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (hospitalName.trim() === "" || email.trim() === "" || phone.trim() === "" || password.trim() === "" || confirmPassword.trim() === "") {
+                errorMessage.textContent = "Please fill in all fields";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // Validate email format
+            const isEmail = /^[^@]+@[^@]+\.[^@]+$/.test(email);
+            if (!isEmail) {
+                errorMessage.textContent = "Please enter a valid email address";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // Validate phone number format (10 digits)
+            const isPhone = /^[0-9]{10}$/.test(phone);
+            if (!isPhone) {
+                errorMessage.textContent = "Please enter a valid phone number (10 digits)";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // Validate password match
+            if (password !== confirmPassword) {
+                errorMessage.textContent = "Passwords do not match";
+                errorMessage.style.display = "block";
+                return;
+            }
+
+            // Simulate successful registration
+            successMessage.style.display = "block";
+            errorMessage.style.display = "none";
+
+            // Redirect to hospital dashboard after successful registration
+            setTimeout(() => {
+                window.location.assign("hospital_dashboard.html");
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthNest - Donations</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #1a73e8;
+      color: white;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar li:hover, .sidebar li.active {
+      background-color: #4285f4;
+    }
+
+    .sidebar .material-icons {
+      margin-right: 10px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1a73e8;
+      margin-bottom: 30px;
+    }
+
+    .donations {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .donation {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .donation:last-child {
+      border-bottom: none;
+    }
+
+    .donation-details {
+      flex-grow: 1;
+    }
+
+    .donation-actions button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .donation-actions button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>HealthNest</h2>
+    <ul>
+      <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+      <li><a href="appointments.html"><span class="material-icons">event</span> Appointments</a></li>
+      <li><a href="jobs.html"><span class="material-icons">work</span> Jobs</a></li>
+      <li><a href="profile.html"><span class="material-icons">person</span> Profile</a></li>
+      <li class="active"><a href="donations.html"><span class="material-icons">volunteer_activism</span> Donations</a></li>
+      <li><a href="settings.html"><span class="material-icons">settings</span> Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">Donations</div>
+
+    <div class="donations">
+      <div class="donation">
+        <div class="donation-details">
+          <div><strong>Donor:</strong> John Smith</div>
+          <div><strong>Amount:</strong> $100</div>
+          <div><strong>Date:</strong> 2025-03-15</div>
+        </div>
+        <div class="donation-actions">
+          <button onclick="viewDonation()">View</button>
+          <button onclick="deleteDonation()">Delete</button>
+        </div>
+      </div>
+      <!-- Add more donations as needed -->
+    </div>
+  </div>
+
+  <script>
+    function viewDonation() {
+      alert('Viewing donation details.');
+      // Logic to view donation details
+    }
+
+    function deleteDonation() {
+      alert('Donation deleted.');
+      // Logic to delete donation
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthNest - Jobs</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f7f9fc;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 230px;
+      background-color: #0b3d91;
+      color: white;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .sidebar li:hover, .sidebar li.active {
+      background-color: #4285f4;
+    }
+
+    .sidebar .material-icons {
+      margin-right: 10px;
+    }
+
+    .main-content {
+      margin-left: 230px;
+      padding: 30px;
+      flex-grow: 1;
+    }
+
+    .header {
+      font-size: 26px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    .jobs {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+
+    .job {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .job:last-child {
+      border-bottom: none;
+    }
+
+    .job-details {
+      flex-grow: 1;
+    }
+
+    .job-actions button {
+      background-color: #0b3d91;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    .job-actions button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>HealthNest</h2>
+    <ul>
+      <li><a href="dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+      <li><a href="appointments.html"><span class="material-icons">event</span> Appointments</a></li>
+      <li class="active"><a href="jobs.html"><span class="material-icons">work</span> Jobs</a></li>
+      <li><a href="profile.html"><span class="material-icons">person</span> Profile</a></li>
+      <li><a href="settings.html"><span class="material-icons">settings</span> Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">Jobs</div>
+
+    <div class="jobs">
+      <div class="job">
+        <div class="job-details">
+          <div><strong>Position:</strong> Nurse</div>
+          <div><strong>Department:</strong> Pediatrics</div>
+          <div><strong>Date Posted:</strong> 2025-03-10</div>
+        </div>
+        <div class="job-actions">
+          <button onclick="viewJob()">View</button>
+          <button onclick="deleteJob()">Delete</button>
+        </div>
+      </div>
+      <!-- Add more jobs as needed -->
+    </div>
+  </div>
+
+  <script>
+    function viewJob() {
+      alert('Viewing job details.');
+      // Logic to view job details
+    }
+
+    function deleteJob() {
+      alert('Job deleted.');
+      // Logic to delete job
+    }
+  </script>
+</body>
+</html>

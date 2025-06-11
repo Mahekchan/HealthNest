@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HealthNest Dashboard</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 250px;
+      background-color: #1a73e8;
+      color: white;
+      height: 100vh;
+      padding-top: 20px;
+      position: fixed;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .sidebar li {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .sidebar li:hover, .sidebar li.active {
+      background-color: #4285f4;
+    }
+
+    .sidebar .material-icons {
+      margin-right: 10px;
+    }
+
+    .sidebar a {
+      color: white;
+      text-decoration: none;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .main-content {
+      margin-left: 250px;
+      padding: 40px;
+      flex-grow: 1;
+    }
+
+    .header {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1a73e8;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      flex: 1;
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .card i {
+      font-size: 36px;
+      color: #1a73e8;
+    }
+
+    .card-content {
+      flex: 1;
+    }
+
+    .card-number {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .card-details {
+      display: none;
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: white;
+      border: 1px solid #ccc;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+
+    .card:hover .card-details {
+      display: block;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .buttons button {
+      padding: 12px 18px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-view {
+      background-color: #1a73e8;
+      color: white;
+    }
+
+    .btn-post {
+      background-color: #34a853;
+      color: white;
+    }
+
+    .btn-edit {
+      background-color: #fbbc05;
+      color: white;
+    }
+
+    .buttons button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+      }
+
+      .main-content {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>HealthNest</h2>
+    <ul>
+      <li class="active"><a href="../public/hospital_dashboard.html"><span class="material-icons">dashboard</span> Dashboard</a></li>
+      <li><a href="../public/appointments.html"><span class="material-icons">event</span> Appointments</a></li>
+      <li><a href="../public/jobs.html"><span class="material-icons">work</span> Jobs</a></li>
+      <li><a href="../public/donations.html"><span class="material-icons">volunteer_activism</span> Donations</a></li>
+      <li><a href="../public/profile.html"><span class="material-icons">person</span> Profile</a></li>
+      <li><a href="../public/setting.html"><span class="material-icons">settings</span> Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">👋 Hello, Sunrise Hospital!</div>
+
+    <div class="cards">
+      <div class="card" id="total-appointments-card">
+        <i class="material-icons">calendar_today</i>
+        <div class="card-content">
+          <div>Total Appointments</div>
+          <div class="card-number" id="total-appointments">0</div>
+        </div>
+        <div class="card-details" id="total-appointments-details">
+          <p>Details about total appointments will be displayed here.</p>
+        </div>
+      </div>
+      <div class="card" id="pending-appointments-card">
+        <i class="material-icons">pending</i>
+        <div class="card-content">
+          <div>Pending Appointments</div>
+          <div class="card-number" id="pending-appointments">0</div>
+        </div>
+        <div class="card-details" id="pending-appointments-details">
+          <p>Details about pending appointments will be displayed here.</p>
+        </div>
+      </div>
+      <div class="card" id="completed-appointments-card">
+        <i class="material-icons">check_circle</i>
+        <div class="card-content">
+          <div>Completed Appointments</div>
+          <div class="card-number" id="completed-appointments">0</div>
+        </div>
+        <div class="card-details" id="completed-appointments-details">
+          <p>Details about completed appointments will be displayed here.</p>
+        </div>
+      </div>
+      <div class="card" id="total-donations-card">
+        <i class="material-icons">volunteer_activism</i>
+        <div class="card-content">
+          <div>Total Donations</div>
+          <div class="card-number" id="total-donations">0</div>
+        </div>
+        <div class="card-details" id="total-donations-details">
+          <p>Details about total donations will be displayed here.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button class="btn-view" onclick="viewAppointments()">View Appointments</button>
+      <button class="btn-post" onclick="postJob()">Post a Job</button>
+      <button class="btn-edit" onclick="editProfile()">Edit Profile</button>
+      <button class="btn-view" onclick="viewDonations()">View Donations</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Sample data
+      const totalAppointments = 120;
+      const pendingAppointments = 30;
+      const completedAppointments = 90;
+      const totalDonations = 5000; // Example data
+
+      document.getElementById('total-appointments').textContent = totalAppointments;
+      document.getElementById('pending-appointments').textContent = pendingAppointments;
+      document.getElementById('completed-appointments').textContent = completedAppointments;
+      document.getElementById('total-donations').textContent = totalDonations;
+
+      // Add event listeners for interactive elements
+      document.getElementById('total-appointments-card').addEventListener('click', function() {
+        viewAppointments('total');
+      });
+
+      document.getElementById('pending-appointments-card').addEventListener('click', function() {
+        viewAppointments('pending');
+      });
+
+      document.getElementById('completed-appointments-card').addEventListener('click', function() {
+        viewAppointments('completed');
+      });
+
+      document.getElementById('total-donations-card').addEventListener('click', function() {
+        viewDonations();
+      });
+    });
+
+    function viewAppointments(type = 'total') {
+      alert('Viewing ' + type + ' appointments...');
+      // Logic to display appointments based on the type
+    }
+
+    function postJob() {
+      alert('Posting a new job...');
+      // Logic to post a new job
+    }
+
+    function editProfile() {
+      alert('Editing profile...');
+      // Logic to edit profile
+    }
+
+    function viewDonations() {
+      alert('Viewing donations...');
+      // Logic to view donations
+    }
+  </script>
+</body>
+</html>
